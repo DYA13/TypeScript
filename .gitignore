@@ -1,6 +1,2 @@
-# Dependency directories
-node_modules/
-
-# other
 .DS_Store
 .vscode
