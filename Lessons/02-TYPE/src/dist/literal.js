@@ -6,8 +6,22 @@ const translate = (lang, text) => {
     // text translate
     return text;
 };
-translate(locale_1.LOCALE_EN, "text");
-translate(locale_1.LOCALE_RU, "text");
+translate(locale_1.Locale.EN, "text");
+translate(locale_1.Locale.RU, "text");
+console.log("moderator" /* TypeUser["moderator"] */);
+const res = {
+    message: "Good Luck!",
+    statusCode: "success" /* statusCode.SUCCESS */
+};
+if (res.statusCode === "process" /* statusCode.PROCESS */) {
+    //preloader
+}
+if (res.statusCode === "success" /* statusCode.SUCCESS */) {
+    //render
+}
+if (res.statusCode === "failed" /* statusCode.FAILED */) {
+    //err
+}
 // {
 //   type httpMethod = "GET" | "POST"
 //   const apiService = (url: string, method: httpMethod) => fetch(url, { method })

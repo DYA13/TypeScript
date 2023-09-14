@@ -1,12 +1,43 @@
-import { LOCALE_EN, LOCALE_RU } from "./locale"
+import { Locale } from "./locale"
 
 //function with literal types
-const translate = (lang: "ru-RU" | "en-US", text: string): string => {
+const translate = (lang: Locale, text: string): string => {
   // text translate
   return text
 }
-translate(LOCALE_EN, "text")
-translate(LOCALE_RU, "text")
+translate(Locale.EN, "text")
+translate(Locale.RU, "text")
+
+//console.log(Locale)
+
+const enum TypeUser {
+  admin = "admin",
+  moderator = "moderator",
+  user = "user"
+}
+
+console.log(TypeUser["moderator"])
+
+const enum statusCode {
+  SUCCESS = "success",
+  PROCESS = "process",
+  FAILED = "failed"
+}
+
+const res = {
+  message: "Good Luck!",
+  statusCode: statusCode.SUCCESS
+}
+
+if (res.statusCode === statusCode.PROCESS) {
+  //preloader
+}
+if (res.statusCode === statusCode.SUCCESS) {
+  //render
+}
+if (res.statusCode === statusCode.FAILED) {
+  //err
+}
 
 // {
 //   type httpMethod = "GET" | "POST"
