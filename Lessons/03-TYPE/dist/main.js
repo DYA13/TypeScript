@@ -23,16 +23,15 @@
 //   }
 // } as pet
 //console.log(myCat)
-// Функция type guards
-const isAnimal = (val) => "habitat" in val;
-// Функцию type guards  нужно вызвать внутри условия
-const handle = (val) => {
-    if (isAnimal(val)) {
-        val.habitat;
-    }
-    else {
-    }
-};
+// // Функция type guards
+// const isAnimal = (val: animal | pet): val is animal => "habitat" in val
+// // Функцию type guards  нужно вызвать внутри условия
+// const handle = (val: animal | pet) => {
+//   if (isAnimal(val)) {
+//     val.habitat
+//   } else {
+//   }
+// }
 // const animalToPet = (animal: animal, home: string, nameOwner: string): pet => ({
 //   name: animal.name,
 //   home,
