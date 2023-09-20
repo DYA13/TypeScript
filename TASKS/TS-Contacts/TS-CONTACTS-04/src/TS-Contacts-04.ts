@@ -46,13 +46,13 @@ const persons: Person[] = [
 ]
 
 // Функция для определения, является ли пользователь администратором
-const isAdmin = (user: Person): boolean => {
-  return "role" in user
+const isAdmin = (user: Person): user is Admin => {
+  return (user as Admin).role !== undefined
 }
 
 // Функция для определения, является ли пользователь обычным пользователем
-const isUser = (user: Person): boolean => {
-  return !isAdmin(user)
+const isUser = (user: Person): user is User => {
+  return (user as User).group !== undefined
 }
 
 // Функция для определения типа пользователя

@@ -33,11 +33,11 @@ const persons = [
 ];
 // Функция для определения, является ли пользователь администратором
 const isAdmin = (user) => {
-    return "role" in user;
+    return user.role !== undefined;
 };
 // Функция для определения, является ли пользователь обычным пользователем
 const isUser = (user) => {
-    return !isAdmin(user);
+    return user.group !== undefined;
 };
 // Функция для определения типа пользователя
 const getUserType = (user) => {
