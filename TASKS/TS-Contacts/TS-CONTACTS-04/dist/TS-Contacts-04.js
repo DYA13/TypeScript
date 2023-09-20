@@ -31,6 +31,14 @@ const persons = [
         group: "Colleague"
     }
 ];
+// Функция для определения, является ли пользователь администратором
+const isAdmin = (user) => {
+    return "role" in user;
+};
+// Функция для определения, является ли пользователь обычным пользователем
+const isUser = (user) => {
+    return !isAdmin(user);
+};
 // Функция для определения типа пользователя
 const getUserType = (user) => {
     if ("group" in user) {
