@@ -61,9 +61,9 @@ person2.setJob(job2)
 person3.setJob(job3)
 
 //сотрудники работают
-// person1.work() // Александр работает как Тянуть
-// person2.work() // Мария работает как Толкать
-// person3.work() //  Алексей работает как Убирать
+person1.work() // Александр работает как Тянуть
+person2.work() // Мария работает как Толкать
+person3.work() //  Алексей работает как Убирать
 
 //переквалификация сотрудников
 person1.setJob(job3)
@@ -75,6 +75,6 @@ person2.work() //Мария сейчас работает как Тянуть
 person3.work() //Алексей сейчас работает как  Толкать
 
 // проверяем зарплату
-// console.log(`${person1.getSalary()} рублей`)
-// console.log(`${person2.getSalary()} рублей`)
-// console.log(`${person3.getSalary()} рублей`)
+console.log(`${person1.getSalary()} рублей`)
+console.log(`${person2.getSalary()} рублей`)
+console.log(`${person3.getSalary()} рублей`)
