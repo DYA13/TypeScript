@@ -109,13 +109,18 @@ class Student extends Person {
     static {
         Student.count = 0;
     }
+    logger() {
+        console.log(this);
+    }
 }
-//console.log(Student.school)
-const person1 = new Person("Petr", 41);
-//person1.changeInfo("Web")
-console.log("person", person1.getInfo());
-const studentPetr = Student.createStudentFromPerson(person1, "Design");
-console.log("studentPetr: ", studentPetr);
+console.log(Student.school);
+const student1 = new Student("Mark", "web", 16);
+console.log("student1: ", student1.getInfo());
+// const person1: Person = new Person("Petr", 41)
+// //person1.changeInfo("Web")
+// console.log("person", person1.getInfo())
+// const studentPetr: Student = Student.createStudentFromPerson(person1, "Design")
+// console.log("studentPetr: ", studentPetr)
 // const student2: Student = new Student("Dmitriy", "Frontend", 34)
 // student2.changeInfo("Web")
 // console.log("student2", student2.getInfo())

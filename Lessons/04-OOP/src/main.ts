@@ -5,7 +5,7 @@ enum StatusStudent {
   bachelor = "bachelor"
 }
 
-class Person {
+abstract class Person {
   age?: number
   private id: string =
     Math.random().toString(32).substring(2, 6) +
@@ -25,6 +25,7 @@ class Person {
     }
     return this.name
   }
+  abstract logger(): void
 }
 
 //Модификаторы: public, private, protected
@@ -135,15 +136,21 @@ class Student extends Person {
   static {
     Student.count = 0
   }
+  logger(): void {
+    console.log(this)
+  }
 }
-//console.log(Student.school)
+console.log(Student.school)
 
-const person1: Person = new Person("Petr", 41)
-//person1.changeInfo("Web")
-console.log("person", person1.getInfo())
+const student1: Student = new Student("Mark", "web", 16)
+console.log("student1: ", student1.getInfo())
 
-const studentPetr: Student = Student.createStudentFromPerson(person1, "Design")
-console.log("studentPetr: ", studentPetr)
+// const person1: Person = new Person("Petr", 41)
+// //person1.changeInfo("Web")
+// console.log("person", person1.getInfo())
+
+// const studentPetr: Student = Student.createStudentFromPerson(person1, "Design")
+// console.log("studentPetr: ", studentPetr)
 
 // const student2: Student = new Student("Dmitriy", "Frontend", 34)
 // student2.changeInfo("Web")
