@@ -84,11 +84,26 @@ class Student extends Person {
     static createStudents(list, course) {
         return list.map((name) => new Student(name, course));
     }
-    static createStudentFromPerson(person) {
-        if (person.age) {
-            return new Student(person.name, person.age);
-        }
-        return new Student(person.name);
+    static createStudentFromPerson(person, course) {
+        // реализация с тернарным оператором
+        return person.age
+            ? course
+                ? new Student(person.name, course, person.age)
+                : new Student(person.name, person.age)
+            : course
+                ? new Student(person.name, course)
+                : new Student(person.name);
+        // реализация с if
+        // if (person.age) {
+        //   if (course) {
+        //     return new Student(person.name, course, person.age)
+        //   }
+        //   return new Student(person.name, person.age)
+        // }
+        // if (course) {
+        //   return new Student(person.name, course)
+        // }
+        // return new Student(person.name)
     }
     // статичный блок,запустится первый
     static {
@@ -99,18 +114,19 @@ class Student extends Person {
 const person1 = new Person("Petr", 41);
 //person1.changeInfo("Web")
 console.log("person", person1.getInfo());
-const studentPetr = Student.createStudentFromPerson(person1);
-const student2 = new Student("Dmitriy", "Frontend", 34);
-student2.changeInfo("Web");
-console.log("student2", student2.getInfo());
-const students = Student.createStudents(["Ivan", "Alexey", "Rinat"], "React");
-console.log("students:", students);
-const student3 = new Student("Artur", 28);
-student3.changeInfo(2);
-console.log("student3", student3);
-const student4 = new Student("Gennadiy", "JS", 18);
-student4.changeInfo(3);
-console.log("student4", student4);
+const studentPetr = Student.createStudentFromPerson(person1, "Design");
+console.log("studentPetr: ", studentPetr);
+// const student2: Student = new Student("Dmitriy", "Frontend", 34)
+// student2.changeInfo("Web")
+// console.log("student2", student2.getInfo())
+// const students = Student.createStudents(["Ivan", "Alexey", "Rinat"], "React")
+// console.log("students:", students)
+// const student3: Student = new Student("Artur", 28)
+// student3.changeInfo(2)
+// console.log("student3", student3)
+// const student4: Student = new Student("Gennadiy", "JS", 18)
+// student4.changeInfo(3)
+// console.log("student4", student4)
 const student = new Student("Dmitriy", "Frontend");
 console.log("student", student);
 setTimeout(() => {
