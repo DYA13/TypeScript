@@ -7,11 +7,11 @@ enum StatusStudent {
 
 class Person {
   age?: number
-  id: string =
+  private id: string =
     Math.random().toString(32).substring(2, 6) +
     Date.now().toString().substring(9)
-  createAt: Date = new Date()
-  updateAt?: Date
+  private createAt: Date = new Date()
+  protected updateAt?: Date
   constructor(name: string)
   constructor(name: string, age: number | undefined)
   constructor(public readonly name: string, age?: number | undefined) {
@@ -104,6 +104,13 @@ class Student extends Person {
   static createStudents(list: string[], course: string): Student[] {
     return list.map((name) => new Student(name, course))
   }
+  static createStudentFromPerson(person: Person): Student {
+    if (person.age) {
+      return new Student(person.name, person.age)
+    }
+    return new Student(person.name)
+  }
+
   // статичный блок,запустится первый
   static {
     Student.count = 0
@@ -114,6 +121,8 @@ class Student extends Person {
 const person1: Person = new Person("Petr", 41)
 //person1.changeInfo("Web")
 console.log("person", person1.getInfo())
+
+const studentPetr: Student = Student.createStudentFromPerson(person1)
 
 const student2: Student = new Student("Dmitriy", "Frontend", 34)
 student2.changeInfo("Web")

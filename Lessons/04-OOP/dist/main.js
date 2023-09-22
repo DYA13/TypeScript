@@ -84,6 +84,12 @@ class Student extends Person {
     static createStudents(list, course) {
         return list.map((name) => new Student(name, course));
     }
+    static createStudentFromPerson(person) {
+        if (person.age) {
+            return new Student(person.name, person.age);
+        }
+        return new Student(person.name);
+    }
     // статичный блок,запустится первый
     static {
         Student.count = 0;
@@ -93,6 +99,7 @@ class Student extends Person {
 const person1 = new Person("Petr", 41);
 //person1.changeInfo("Web")
 console.log("person", person1.getInfo());
+const studentPetr = Student.createStudentFromPerson(person1);
 const student2 = new Student("Dmitriy", "Frontend", 34);
 student2.changeInfo("Web");
 console.log("student2", student2.getInfo());
