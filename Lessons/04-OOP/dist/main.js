@@ -6,31 +6,48 @@ var StatusStudent;
     StatusStudent["graduate"] = "graduate";
     StatusStudent["bachelor"] = "bachelor";
 })(StatusStudent || (StatusStudent = {}));
+class Person {
+    name;
+    age;
+    id = Math.random().toString(32).substring(2, 6) +
+        Date.now().toString().substring(9);
+    createAt = new Date();
+    updateAt;
+    constructor(name, age) {
+        this.name = name;
+        if (typeof age === "number") {
+            this.age = age;
+        }
+    }
+    getInfo() {
+        if (this.age) {
+            return `${this.name}, age ${this.age}`;
+        }
+        return this.name;
+    }
+}
 //Модификаторы: public, private, protected
 // Статичные методы и свойства: # свойство не будет видно снаружи  в консоле
-class Student {
+class Student extends Person {
     name;
     static school = "METHED"; // статичное свойство
     static count;
-    id = Math.random().toString(32).substring(2, 6) +
-        Date.now().toString().substring(9);
     status = StatusStudent.enrolee;
-    createAt = new Date();
-    updateAt;
     course;
-    age;
     _module = 0; // восклицательный знак- не обращать внимание на это свойство. Второй способ решения проблемы поставить false  на "strictPropertyInitialization",можно  также поставить восклицательный знак как решение проблемы инициализации , в случае ,если не инициализировано
     constructor(name, courseOrAge, age) {
+        let ageOrUndefined;
+        if (typeof courseOrAge === "number") {
+            ageOrUndefined = courseOrAge;
+        }
+        if (age) {
+            ageOrUndefined = age;
+        }
+        super(name, ageOrUndefined);
         this.name = name;
         if (typeof courseOrAge === "string") {
             this.course = courseOrAge;
             this.changeStatus(StatusStudent.student);
-        }
-        if (typeof courseOrAge === "number") {
-            this.age = courseOrAge;
-        }
-        if (age) {
-            this.age = age;
         }
         Student.count++;
     }
@@ -57,6 +74,13 @@ class Student {
         }
         this.changeUpdateDate();
     }
+    getInfo() {
+        const info = super.getInfo();
+        if (this.course) {
+            return ` ${info},is studying on course ${this.course}`;
+        }
+        return info;
+    }
     static createStudents(list, course) {
         return list.map((name) => new Student(name, course));
     }
@@ -65,16 +89,16 @@ class Student {
         Student.count = 0;
     }
 }
-console.log(Student.school);
+//console.log(Student.school)
+const person1 = new Person("Petr", 41);
+//person1.changeInfo("Web")
+console.log("person", person1.getInfo());
+const student2 = new Student("Dmitriy", "Frontend", 34);
+student2.changeInfo("Web");
+console.log("student2", student2.getInfo());
 const students = Student.createStudents(["Ivan", "Alexey", "Rinat"], "React");
 console.log("students:", students);
-const student1 = new Student("Petr");
-student1.changeInfo("JS", 4);
-console.log("student1", student1);
-const student2 = new Student("Dmitriy", "Frontend");
-student2.changeInfo("Web");
-console.log("student2", student2);
-const student3 = new Student("Artur", 18);
+const student3 = new Student("Artur", 28);
 student3.changeInfo(2);
 console.log("student3", student3);
 const student4 = new Student("Gennadiy", "JS", 18);
