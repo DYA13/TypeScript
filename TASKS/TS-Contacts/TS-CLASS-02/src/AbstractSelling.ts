@@ -17,6 +17,10 @@ abstract class AbstractSelling {
   static compare(a: AbstractSelling, b: AbstractSelling): number {
     return b.getPrice() - a.getPrice()
   }
+  //provide a method for getting the product name
+  getProductName(): string {
+    return this.product.getName()
+  }
 }
 
 export default AbstractSelling
