@@ -16,18 +16,36 @@
 // log2<string>("строка")
 // log2<boolean>(!5)
 
-const log = <T>(val: T): T => {
-  console.log(val)
-  return val
+// const log = <T>(val: T): T => {
+//   console.log(val)
+//   return val
+// }
+
+// log<string>("строка")
+// log(5)
+
+// const logFoo = (val: number | string): number | string => {
+//   console.log(val)
+//   return val
+// }
+
+// const c = logFoo(5)
+// const d = logFoo("строка")
+
+class HttpResponse5<D, E> {
+  protected success: boolean
+  protected data?: D
+  protected code?: E
+
+  constructor(success: boolean, data?: D, error?: E) {
+    this.success = success
+    if (data) {
+      this.data = data
+    }
+    if (error) {
+      this.code = error
+    }
+  }
 }
-
-log<string>("строка")
-log(5)
-
-const logFoo = (val: number | string): number | string => {
-  console.log(val)
-  return val
-}
-
-const c = logFoo(5)
-const d = logFoo("строка")
+const responseToken = new HttpResponse5<number, string>(true, 4545665658)
+const responseUser = new HttpResponse5<string, string>(true, "Gennadiy")
