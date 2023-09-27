@@ -11,7 +11,7 @@ class Job {
     return this.salary
   }
   //публичный метод work, который принимает в качестве аргумента строку personName
-  public work(personName: string): void {
+  work(personName: string): void {
     console.log(`${personName} сейчас работает как ${this.role}`)
   }
 }
